@@ -23,17 +23,18 @@ public class StatDisplayer : MonoBehaviour
         Name.text = defaultitem.Itemname + "\n" + "Quality = " + defaultitem.Itemquality;
         if (Stats.text == "")
         {
+            Stats.text += "\n";
             if (defaultitem.Itemdamage != 0)
             {
                 Stats.text += "Damage = " + defaultitem.Itemdamage + "\n\n";
             }
             if (defaultitem.ItemcritChance != 0)
             {
-                Stats.text += "Critical Chance = " + defaultitem.ItemcritChance + "\n\n";
+                Stats.text += "Critical Chance = " + defaultitem.ItemcritChance + "%\n\n";
             }
             if (defaultitem.ItemcritDamage != 0)
             {
-                Stats.text += "Critical Damage = " + defaultitem.ItemcritDamage + "\n\n";
+                Stats.text += "Critical Damage = " + defaultitem.ItemcritDamage + "%\n\n";
             }
             if (defaultitem.Itemhealth != 0)
             {
@@ -44,7 +45,7 @@ public class StatDisplayer : MonoBehaviour
                 Stats.text += "Defence = " + defaultitem.Itemdefence + "\n\n";
             }
         }
-        Description.text = defaultitem.Itemdesc;
+        Description.text = "\" " + defaultitem.Itemdesc + " \"";
     }
 
     public void Equip()

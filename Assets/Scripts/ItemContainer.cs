@@ -9,7 +9,7 @@ public class ItemContainer : MonoBehaviour
 
     public void Quality(int randomQualtiy)
     {
-        randomItemGroup = UnityEngine.Random.Range(1, 3) * 5; // 5 - 10...
+        randomItemGroup = UnityEngine.Random.Range(1, 6) * 5; // 5 - 10...
         if (randomQualtiy > 97) // 50 25 15 7 3
         {
             randomItemGroup -= 0;

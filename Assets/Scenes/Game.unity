@@ -9360,7 +9360,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 921532768}
         m_TargetAssemblyTypeName: EquipmentManager, Assembly-CSharp
         m_MethodName: DisplayEquippedItem
         m_Mode: 3
@@ -14490,7 +14490,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 921532768}
         m_TargetAssemblyTypeName: EquipmentManager, Assembly-CSharp
         m_MethodName: DisplayEquippedItem
         m_Mode: 3
@@ -14866,8 +14866,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000022888, y: 85}
-  m_SizeDelta: {x: 409.71, y: 253.2954}
+  m_AnchoredPosition: {x: -0.000022888, y: 72.02911}
+  m_SizeDelta: {x: 409.71, y: 323.1382}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &791129914
 MonoBehaviour:
@@ -14919,9 +14919,9 @@ MonoBehaviour:
   m_fontSize: 36
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 26
+  m_fontSizeMax: 38
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
@@ -19212,7 +19212,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 921532768}
         m_TargetAssemblyTypeName: EquipmentManager, Assembly-CSharp
         m_MethodName: DisplayEquippedItem
         m_Mode: 3
@@ -20317,7 +20317,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 921532768}
         m_TargetAssemblyTypeName: EquipmentManager, Assembly-CSharp
         m_MethodName: DisplayEquippedItem
         m_Mode: 3
@@ -28178,7 +28178,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 921532768}
         m_TargetAssemblyTypeName: EquipmentManager, Assembly-CSharp
         m_MethodName: DisplayEquippedItem
         m_Mode: 3
@@ -30314,8 +30314,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000052452, y: 275}
-  m_SizeDelta: {x: 409.7135, y: 77.0485}
+  m_AnchoredPosition: {x: 0.000052452, y: 278.99103}
+  m_SizeDelta: {x: 409.7135, y: 69.0665}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1546078630
 MonoBehaviour:
@@ -31387,8 +31387,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.4272, y: -139.5887}
-  m_SizeDelta: {x: 404.85, y: 149.1773}
+  m_AnchoredPosition: {x: 2.4272, y: -157.17345}
+  m_SizeDelta: {x: 404.85, y: 114.0078}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1622038922
 MonoBehaviour:
@@ -31441,8 +31441,8 @@ MonoBehaviour:
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 32
-  m_fontSizeMax: 72
+  m_fontSizeMin: 26
+  m_fontSizeMax: 40
   m_fontStyle: 2
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256

@@ -109,6 +109,7 @@ public class EquipmentManager : MonoBehaviour
     {
         if (currentEquipment[slotIndex] != null)
         {
+            statDisplayer.RemoveStatsText();
             statDisplayer.ShowStats(currentEquipment[slotIndex]);
             statDisplayer.equip.enabled = false;
             statDisplayer.ButtonText.enabled = false;
