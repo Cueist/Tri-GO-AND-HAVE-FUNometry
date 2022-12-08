@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4cbfddbc24efc145b304d8164c0c1f0, type: 3}
+  m_Name: Kep (Common)
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 755322f710c0a844eade71ca2bd1097e, type: 3}
+  rarity: {fileID: 21300000, guid: 5653aed224821e44f8721b99e5af0066, type: 3}
+  Itemname: Kep
+  Itemquality: Common
+  Itemdesc: "Mezun olman\u0131n gururunu hissettiriyor."
+  Itemdamage: 5
+  Itemhealth: 5
+  Itemdefence: 5
+  ItemcritChance: 5
+  ItemcritDamage: 5
+  equipslot: 0
