@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4cbfddbc24efc145b304d8164c0c1f0, type: 3}
+  m_Name: Cetvel (Epic)
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 584ebd5ec260c88449b1f99aff5dec00, type: 3}
+  rarity: {fileID: 21300000, guid: 2e98ef91f4c097440b365e2e986e55e2, type: 3}
+  Itemname: Cetvel
+  Itemquality: Epic
+  Itemdesc: "Kar\u015F\u0131ndakinin boyunun \xF6l\xE7\xFCs\xFCn\xFC al."
+  Itemdamage: 20
+  Itemhealth: 0
+  Itemdefence: 17.5
+  ItemcritChance: 0
+  ItemcritDamage: 0
+  equipslot: 2
