@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Analytics;
 
 public class EquipmentManager : MonoBehaviour
 {
@@ -9,7 +7,6 @@ public class EquipmentManager : MonoBehaviour
     public EquipmentDisplayer equipmentDisplayer;
     public StatDisplayer statDisplayer;
     public Player player;
-    private string Gender = "Male";
 
     void Awake()
     {
@@ -22,17 +19,20 @@ public class EquipmentManager : MonoBehaviour
     {
         inventory = Inventory.instance;
 
-        Gender = player.Pgender;
-        if(Gender == "Male")
+        int numSlots = System.Enum.GetNames(typeof(Equipment.EquipmentSlot)).Length; 
+        currentEquipment = new Equipment[numSlots];
+    }
+
+    void Update()
+    {
+        if (player.Pgender == "Male")
         {
             equipmentDisplayer.Silhouette.sprite = Resources.Load<Sprite>("ItemPictures/mansilhouette");
         }
-        else if(Gender == "Female")
+        else if (player.Pgender == "Female")
         {
             equipmentDisplayer.Silhouette.sprite = Resources.Load<Sprite>("ItemPictures/womansilhouette");
         }
-        int numSlots = System.Enum.GetNames(typeof(Equipment.EquipmentSlot)).Length; 
-        currentEquipment = new Equipment[numSlots];
     }
 
     public void Equip (Equipment newItem)

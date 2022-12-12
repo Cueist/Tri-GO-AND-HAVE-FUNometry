@@ -1,20 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class MiddlePart : MonoBehaviour
 {
-    public TextMeshProUGUI AccuracyText;
-    public TextMeshProUGUI IQPointtext;
+    [SerializeField] private TextMeshProUGUI AccuracyText;
+    [SerializeField] private TextMeshProUGUI IQPointtext;
 
-    public void AccText(float acctext)
+    public void AccText(float acctext) // Displaying Accuracy Text
     {
         AccuracyText.text = "" + acctext + "%";
     }
 
-    public void IQText(int iqtext)
+    public void IQText(int iqtext) // Displaying IQ Text
     {
         IQPointtext.text = "" + iqtext;
     }

@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class StageBar : MonoBehaviour
 {
-    public Slider slider;
-    public Image fill;
+    [SerializeField] private Slider slider;
+    [SerializeField] private Image fill;
 
-    public void SetStage(float stage)
+    public void SetStage(float stage) // Displaying/Setting the Game Stage value
     {
         if(stage == 0)
         {
@@ -16,7 +14,6 @@ public class StageBar : MonoBehaviour
         }
         else
         {
-            UnityEngine.Debug.Log("Stage elsede");
             slider.value = stage/10.0f;
         }
     }

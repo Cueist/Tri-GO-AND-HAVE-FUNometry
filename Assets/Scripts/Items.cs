@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
+[CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")] // Creating a new menu for the items
 public class Items : ScriptableObject
 {
     public Sprite icon;
@@ -17,12 +14,12 @@ public class Items : ScriptableObject
     public float ItemcritChance = 0.0f;
     public float ItemcritDamage = 0.0f;
 
-    public virtual void Use()
+    public virtual void Use() // If an active item possibility occurs
     {
         // Do something
     }
 
-    public void RemoveFromInventory()
+    public void RemoveFromInventory() // Removing item from the inventory
     {
         Inventory.instance.Remove(this);
     }

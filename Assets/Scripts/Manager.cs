@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class Manager : MonoBehaviour
 {
@@ -13,8 +14,6 @@ public class Manager : MonoBehaviour
     public GameObject GameScreen, EndGame, GameSettingsMenu, LevelupPart, EndGameWindow, CharacterSelectionpart;
     public MiddlePart middlepart;
     public EndGame endgame;
-    public PNamePart PNamePart;
-    public ENamePart ENamePart;
     public MusicManagement MusicManagement;
     public CharacterSelection CharacterSelection;
     public StageBar StageBar;
@@ -24,8 +23,6 @@ public class Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PNamePart.Naming();
-        player.image.sprite = CharacterSelection.imageToDisplay.sprite;
         StageBar.SetStage(player.stage);
         middlepart.AccText(player.Paccuracy);
         middlepart.IQText(player.Piqcoin);
@@ -38,26 +35,17 @@ public class Manager : MonoBehaviour
             middlepart.IQText(PlayerPrefs.GetInt("IQPoints", 0));
         }
         enemy.EnemyChange(player.Gamelevel, player.stage, player.level);
-        GameLevel.text = "" + player.Gamelevel + ".Sýnýf";
+        GameLevel.text = "" + player.Gamelevel + ".Level";
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        PNamePart.Naming();
-        player.image.sprite = CharacterSelection.imageToDisplay.sprite;
-        ENamePart.Naming();
-    }
-
     public void End()
     {
-        if(player.PcurrentHealth > 0 && player.Gamelevel > 12)
+        if(player.PcurrentHealth > 0 && player.Gamelevel > 7)
         {
             GameScreen.SetActive(false);
             EndGame.SetActive(true);
             endgame.Win();
         }
-        else if(player.Gamelevel > 12 && player.PcurrentHealth <= 0)
+        else if(player.Gamelevel > 7 && player.PcurrentHealth <= 0)
         {
             GameScreen.SetActive(false);
             EndGame.SetActive(true);
@@ -68,6 +56,12 @@ public class Manager : MonoBehaviour
             GameScreen.SetActive(false);
             EndGame.SetActive(true);
             endgame.Lose();
+        }
+        else
+        {
+            GameScreen.SetActive(false);
+            EndGame.SetActive(true);
+            endgame.Win();
         }
     }
 
@@ -159,11 +153,6 @@ public class Manager : MonoBehaviour
     {
         if (player.PcurrentHealth > 0.0f)
         {
-            if (UnityEngine.Random.Range(1, 101) <= enemy.ECriticalChance)
-            {
-                enemy.ETotalDamage = enemy.EDamage * (enemy.ECriticalDamage / 100.0f);
-                UnityEngine.Debug.Log("OUCH!");
-            }
             if(player.PDefence < enemy.ETotalDamage)
             {
                 player.PcurrentHealth -= enemy.ETotalDamage - player.PDefence;
@@ -175,13 +164,7 @@ public class Manager : MonoBehaviour
             }
         }
     }
-
-    public int PlayerStage()
-    {
-        return player.stage;
-    }
-
-    public void PlayerLevelling()
+    public void PlayerLevelling(float remainingxp)
     {
         player.level++;
         player.PmaxHealth += 10.0f;
@@ -190,8 +173,9 @@ public class Manager : MonoBehaviour
         player.PDefence += 1.0f;
         player.PCriticalChance += 1.0f;
         player.PCriticalDamage += 1.0f;
-        player.PcurrentXP = 0.0f;
+        player.PcurrentXP = remainingxp;
         player.PStat++;
+        player.playerxpbar.SetMaxXP(player.PmaxXP, player.level);
         UnityEngine.Debug.Log("Level Up!");
         LevelupPart.SetActive(true);
         StartCoroutine(LevelupCountdown());
@@ -227,23 +211,21 @@ public class Manager : MonoBehaviour
             if (enemy.EcurrentHealth <= 0.0f)
             {
                 player.PcurrentXP += enemy.Exp;
+                player.playerxpbar.SetXP(player.PcurrentXP);
                 player.Piqcoin++;
                 player.stage++;
-                if (player.stage > 10)
+                if (player.Gamelevel == 7 && player.stage == 12 && selectedContinue == false && endchoice == false)
+                {
+                    GameLevel.text = "Sonsuz Mod...";
+                    WantingtoEnd(selectedContinue);
+                    endchoice = true;
+                }
+                else if (player.stage > 10 && (player.Gamelevel != 7 && player.stage != 11))
                 {
                     player.Gamelevel++;
-                    itemcontainer.Quality(100);
-                    if(player.Gamelevel > 12 && selectedContinue == false && endchoice == false)
-                    {
-                        GameLevel.text = "Sonsuz Mod...";
-                        WantingtoEnd(selectedContinue);
-                        endchoice = true;
-                    }
-                    else
-                    {
-                        GameLevel.text = "" + player.Gamelevel + ".Sýnýf";
-                    }
                     player.stage = 0;
+                    itemcontainer.Quality(100);
+                    GameLevel.text = "" + player.Gamelevel + ".Level";
                 }
                 else
                 {

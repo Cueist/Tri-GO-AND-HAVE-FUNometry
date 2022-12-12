@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,34 +19,133 @@ public class Enemy : MonoBehaviour
 
     public EnemyHealthbar healthBar;
     public Image image;
-    private Sprite enemypicture;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
+    public TextMeshProUGUI enemyname;
     void Update()
     {
-        EmaxHealth += 0.0f;
-        EcurrentHealth += 0.0f;
-        EmaxHealth += 0.0f;
-        Elevel += 0;
-        EDamage += 0.0f;
-        EDefence += 0.0f;
-        ECriticalChance += 0.0f;
-        ECriticalDamage += 0.0f;
-        Exp += 0.0f;
-        ETotalDamage += 0.0f;
         healthBar.SetHealth(EcurrentHealth);
+        enemyname.text = Ename + " - " + "Level " + Elevel.ToString();
     }
 
-    public void EnemyChange(int gamelevel, int stage, int LevelScale)
+    public void EnemyChange(int gamelevel, int stage, int LevelScale) //Changing the enemy
     {
         int randomEnemy = UnityEngine.Random.Range(1, 8);
-        int randomLevel = UnityEngine.Random.Range(1, LevelScale+1);
-            UnityEngine.Debug.Log("GameLevel = " + gamelevel + " - Stage = " + stage + " - Enemy Number = " + randomEnemy);
+        int randomLevel = UnityEngine.Random.Range(1, LevelScale + 1);
+        int randombosslevel = Random.Range(LevelScale+1, LevelScale * gamelevel);
+        UnityEngine.Debug.Log("GameLevel = " + gamelevel + " - Stage = " + stage + " - Enemy Number = " + randomEnemy);
+        if (gamelevel == 1 && stage == 10) // Level 1 Boss
+        {
+            Ename = "Pisagor";
+            EmaxHealth = 175.0f + (25.0f * randombosslevel);
+            EDamage = 7.5f + (2.5f * randombosslevel);
+            EDefence = 1.5f + (0.5f * randombosslevel);
+            ECriticalChance = 2.0f + (1.5f * randombosslevel);
+            ECriticalDamage = 200.0f;
+            Elevel = randombosslevel;
+            Exp = 25.0f + (25.0f * randombosslevel);
+            ETotalDamage = EDamage;
+            EcurrentHealth = EmaxHealth;
+            image.sprite = Resources.Load<Sprite>("Enemies/pisagor");
+        }
+        else if (gamelevel == 2 && stage == 10) // Level 2 Boss
+        {
+            Ename = "Cahit Arf";
+            EmaxHealth = 150.0f + (20.0f * randombosslevel);
+            EDamage = 10f + (2.5f * randombosslevel);
+            EDefence = 2.0f + (0.5f * randombosslevel);
+            ECriticalChance = 2.0f + (1.5f * randombosslevel);
+            ECriticalDamage = 200.0f;
+            Elevel = randombosslevel;
+            Exp = 25.0f + (25.0f * randombosslevel);
+            ETotalDamage = EDamage;
+            EcurrentHealth = EmaxHealth;
+            image.sprite = Resources.Load<Sprite>("Enemies/cahitarf");
+        }
+        else if (gamelevel == 3 && stage == 10) // Level 3 Boss
+        {
+            Ename = "Birûni";
+            EmaxHealth = 250.0f + (25.0f * randombosslevel);
+            EDamage = 10f + (2.5f * randombosslevel);
+            EDefence = 2.0f + (0.5f * randombosslevel);
+            ECriticalChance = 3.0f + (1.5f * randombosslevel);
+            ECriticalDamage = 250.0f;
+            Elevel = randombosslevel;
+            Exp = 40.0f + (25.0f * randombosslevel);
+            ETotalDamage = EDamage;
+            EcurrentHealth = EmaxHealth;
+            image.sprite = Resources.Load<Sprite>("Enemies/biruni");
+        }
+        else if (gamelevel == 4 && stage == 10) // Level 4 Boss
+        {
+            Ename = "Leonhard Euler";
+            EmaxHealth = 150.0f + (25.0f * randombosslevel);
+            EDamage = 20f + (2.5f * randombosslevel);
+            EDefence = 1.5f + (0.5f * randombosslevel);
+            ECriticalChance = 2.0f + (1.5f * randombosslevel);
+            ECriticalDamage = 200.0f;
+            Elevel = randombosslevel;
+            Exp = 30.0f + (25.0f * randombosslevel);
+            ETotalDamage = EDamage;
+            EcurrentHealth = EmaxHealth;
+            image.sprite = Resources.Load<Sprite>("Enemies/euler");
+        }
+        else if (gamelevel == 5 && stage == 10) // Level 5 Boss
+        {
+            Ename = "Wilhelm Leibniz";
+            EmaxHealth = 150.0f + (25.0f * randombosslevel);
+            EDamage = 15f + (2.5f * randombosslevel);
+            EDefence = 1.0f + (0.5f * randombosslevel);
+            ECriticalChance = 3.0f + (1.5f * randombosslevel);
+            ECriticalDamage = 300.0f;
+            Elevel = randombosslevel;
+            Exp = 25.0f + (25.0f * randombosslevel);
+            ETotalDamage = EDamage;
+            EcurrentHealth = EmaxHealth;
+            image.sprite = Resources.Load<Sprite>("Enemies/teacher");
+        }
+        else if (gamelevel == 6 && stage == 10) // Level 6 Boss
+        {
+            Ename = "Isaac Newton";
+            EmaxHealth = 200.0f + (25.0f * randombosslevel);
+            EDamage = 15f + (2.5f * randombosslevel);
+            EDefence = 1.5f + (0.5f * randombosslevel);
+            ECriticalChance = 5.0f + (1.5f * randombosslevel);
+            ECriticalDamage = 200.0f;
+            Elevel = randombosslevel;
+            Exp = 50.0f + (25.0f * randombosslevel);
+            ETotalDamage = EDamage;
+            EcurrentHealth = EmaxHealth;
+            image.sprite = Resources.Load<Sprite>("Enemies/newton");
+        }
+        else if (gamelevel == 7 && stage == 10) // Level 7 Boss
+        {
+            Ename = "Aryabhatta";
+            EmaxHealth = 300.0f + (25.0f * randombosslevel);
+            EDamage = 20f + (2.5f * randombosslevel);
+            EDefence = 1.5f + (0.5f * randombosslevel);
+            ECriticalChance = 2.0f + (1.5f * randombosslevel);
+            ECriticalDamage = 200.0f;
+            Elevel = randombosslevel;
+            Exp = 25.0f + (25.0f * randombosslevel);
+            ETotalDamage = EDamage;
+            EcurrentHealth = EmaxHealth;
+            image.sprite = Resources.Load<Sprite>("Enemies/aryabhatta");
+        }
+        else if (gamelevel == 7 && stage == 11) // Final Boss
+        {
+            Ename = "Nasir al-Din al-Tusi";
+            EmaxHealth = 500.0f + (25.0f * randombosslevel);
+            EDamage = 20f + (2.5f * randombosslevel);
+            EDefence = 4.0f + (0.5f * randombosslevel);
+            ECriticalChance = 3.0f + (1.5f * randombosslevel);
+            ECriticalDamage = 400.0f;
+            Elevel = randombosslevel;
+            Exp = 100.0f + (25.0f * randombosslevel);
+            ETotalDamage = EDamage;
+            EcurrentHealth = EmaxHealth;
+            image.sprite = Resources.Load<Sprite>("Enemies/nasir");
+        }
+        else
+        {
             if (randomEnemy == 1)
             {
                 Ename = "Matematik Öðretmeni";
@@ -58,10 +158,7 @@ public class Enemy : MonoBehaviour
                 Exp = 25.0f + (25.0f * LevelScale);
                 ETotalDamage = EDamage;
                 EcurrentHealth = EmaxHealth;
-                healthBar.SetMaxHealth(EmaxHealth);
-                healthBar.SetHealth(EcurrentHealth);
-                enemypicture = Resources.Load<Sprite>("Enemies/teacher");
-                image.sprite = enemypicture;
+                image.sprite = Resources.Load<Sprite>("Enemies/teacher");
             }
             else if (randomEnemy == 2)
             {
@@ -75,10 +172,7 @@ public class Enemy : MonoBehaviour
                 Exp = 12.5f + (12.5f * LevelScale);
                 ETotalDamage = EDamage;
                 EcurrentHealth = EmaxHealth;
-                healthBar.SetMaxHealth(EmaxHealth);
-                healthBar.SetHealth(EcurrentHealth);
-                enemypicture = Resources.Load<Sprite>("Enemies/ilkokulöðrencisi");
-                image.sprite = enemypicture;
+                image.sprite = Resources.Load<Sprite>("Enemies/ilkokulöðrencisi");
             }
             else if (randomEnemy == 3)
             {
@@ -92,10 +186,7 @@ public class Enemy : MonoBehaviour
                 Exp = 50.0f + (50.0f * LevelScale);
                 ETotalDamage = EDamage;
                 EcurrentHealth = EmaxHealth;
-                healthBar.SetMaxHealth(EmaxHealth);
-                healthBar.SetHealth(EcurrentHealth);
-                enemypicture = Resources.Load<Sprite>("Enemies/BaldingBully");
-                image.sprite = enemypicture;
+                image.sprite = Resources.Load<Sprite>("Enemies/BaldingBully");
             }
             else if (randomEnemy == 4)
             {
@@ -108,11 +199,8 @@ public class Enemy : MonoBehaviour
                 Elevel = randomLevel;
                 Exp = 25.0f + (25.0f * LevelScale);
                 ETotalDamage = EDamage;
-                EcurrentHealth = EmaxHealth;
-                healthBar.SetMaxHealth(EmaxHealth);
-                healthBar.SetHealth(EcurrentHealth);
-                enemypicture = Resources.Load<Sprite>("Enemies/studentonduty");
-                image.sprite = enemypicture;
+                EcurrentHealth = EmaxHealth; ;
+                image.sprite = Resources.Load<Sprite>("Enemies/studentonduty");
             }
             else if (randomEnemy == 5)
             {
@@ -126,10 +214,7 @@ public class Enemy : MonoBehaviour
                 Exp = 35.0f + (35.0f * LevelScale);
                 ETotalDamage = EDamage;
                 EcurrentHealth = EmaxHealth;
-                healthBar.SetMaxHealth(EmaxHealth);
-                healthBar.SetHealth(EcurrentHealth);
-                enemypicture = Resources.Load<Sprite>("Enemies/guard");
-                image.sprite = enemypicture;
+                image.sprite = Resources.Load<Sprite>("Enemies/guard");
             }
             else if (randomEnemy == 6)
             {
@@ -143,10 +228,7 @@ public class Enemy : MonoBehaviour
                 Exp = 25.0f + (25.0f * LevelScale);
                 ETotalDamage = EDamage;
                 EcurrentHealth = EmaxHealth;
-                healthBar.SetMaxHealth(EmaxHealth);
-                healthBar.SetHealth(EcurrentHealth);
-                enemypicture = Resources.Load<Sprite>("Enemies/guidanceteacher");
-                image.sprite = enemypicture;
+                image.sprite = Resources.Load<Sprite>("Enemies/guidanceteacher");
             }
             else if (randomEnemy == 7)
             {
@@ -160,10 +242,11 @@ public class Enemy : MonoBehaviour
                 Exp = 200.0f + (200.0f * LevelScale);
                 ETotalDamage = EDamage;
                 EcurrentHealth = EmaxHealth;
-                healthBar.SetMaxHealth(EmaxHealth);
-                healthBar.SetHealth(EcurrentHealth);
-                enemypicture = Resources.Load<Sprite>("Enemies/schoolprincipal");
-                image.sprite = enemypicture;
+                image.sprite = Resources.Load<Sprite>("Enemies/schoolprincipal");
             }
+        }
+        healthBar.SetMaxHealth(EmaxHealth);
+        healthBar.SetHealth(EcurrentHealth);
+        enemyname.text = Ename + " - " + "Level " + Elevel.ToString();
     }
 }

@@ -1,23 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MusicManagementMenu : MonoBehaviour
 {
-    public Slider Music, Volume;
-    public AudioSource musicsample, volumesample;
-    bool m_screenone, m_screentwo;
-    public float defaultValueM = 0.2f, defaultValueV = 0.5f;
+    [SerializeField] private Slider Music, Volume;
+    [SerializeField] private AudioSource musicsample, volumesample;
+    [SerializeField] private bool m_screenone, m_screentwo;
+    [SerializeField] private float defaultValueM = 0.2f, defaultValueV = 0.5f;
 
     void Start()
     {
-        if (PlayerPrefs.HasKey("Music"))
+        if (PlayerPrefs.HasKey("Music")) // Checking if there was a saved Music value before
         {
             Music.value = PlayerPrefs.GetFloat("Music", 0.20f);
         }
-        if (PlayerPrefs.HasKey("Volume"))
+        if (PlayerPrefs.HasKey("Volume")) // Checking if there was a saved Volume value before
         {
             Volume.value = PlayerPrefs.GetFloat("Volume", 0.50f);
         }
@@ -27,7 +25,7 @@ public class MusicManagementMenu : MonoBehaviour
         m_screentwo = true;
     }
 
-    void Awake()
+    void Awake() // Adding Music and Volue values, If there was a saved Music, Volume values
     {
         if (PlayerPrefs.HasKey("Music"))
         {
@@ -41,17 +39,17 @@ public class MusicManagementMenu : MonoBehaviour
 
     void Update()
     {
-        defaultValueM = Music.value;
+        defaultValueM = Music.value; // Updating the values according to the slider's values
         defaultValueV = Volume.value;
         PlayerPrefs.SetFloat("Music", defaultValueM);
         PlayerPrefs.SetFloat("Volume", defaultValueV);
-        if (SceneManager.GetActiveScene().buildIndex == 0 && m_screenone == true)
+        if (SceneManager.GetActiveScene().buildIndex == 0 && m_screenone == true) // Playing the music even when the scenes switched (For Menu)
         {
             musicsample.Play();
             m_screenone = false;
             m_screentwo = true;
         }
-        if (SceneManager.GetActiveScene().buildIndex == 1 && m_screentwo == true)
+        if (SceneManager.GetActiveScene().buildIndex == 1 && m_screentwo == true) // Playing the music even when the scenes switched (For Game)
         {
             musicsample.Play();
             m_screentwo = false;
@@ -59,7 +57,7 @@ public class MusicManagementMenu : MonoBehaviour
         }
     }
 
-    void OnGUI()
+    void OnGUI() // Configure the values on GUI change
     {
         musicsample.volume = defaultValueM;
         Music.value = defaultValueM;

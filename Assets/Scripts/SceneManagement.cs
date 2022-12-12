@@ -1,20 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine.UI;
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 public class SceneManagement : MonoBehaviour
 {
-    public Button skipCutscene;
-    public GameObject Cutscene, musicmanagement;
-    private int newPlayer = 1;
+    [SerializeField] private Button skipCutscene;
+    [SerializeField] private GameObject Cutscene, musicmanagement;
+    [SerializeField] private int newPlayer = 1;
 
     public void PlayGame()
     {
-        if(newPlayer == 1)
+        if(newPlayer == 1) // Checking if it is the user's first time
         {
             UnityEngine.Debug.Log("Opening CutScene");
             newPlayer = 0;
@@ -31,7 +26,7 @@ public class SceneManagement : MonoBehaviour
         }
     }
 
-    void Awake()
+    void Awake() // Checking the newPlayer status
     {
         if (PlayerPrefs.HasKey("FirstTime"))
         {
@@ -39,19 +34,18 @@ public class SceneManagement : MonoBehaviour
         }
     }
 
-    public void Skip()
+    public void Skip() // Skip features for the Cutscene
     {
         UnityEngine.Debug.Log("Skipping Cutscene");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); // Opening the next Scene(Game)
         musicmanagement.SetActive(true);
     }
 
-    public void QuitGame()
+    public void QuitGame() // Application.Quit() does not work in the editor so UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
     {
 #if UNITY_EDITOR
-         // Application.Quit() does not work in the editor so
-         // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
-         UnityEditor.EditorApplication.isPlaying = false;
+        UnityEngine.Debug.Log("Qutting");
+        UnityEditor.EditorApplication.isPlaying = false;
 #else
         UnityEngine.Debug.Log("Qutting");
         UnityEngine.Application.Quit();

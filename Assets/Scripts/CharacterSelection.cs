@@ -12,9 +12,9 @@ public class CharacterSelection : MonoBehaviour
     private byte[] fileData;
     private int max = 6, min = 0, counter = 0;
     private Sprite[] profilepictures = new Sprite[7];
-    public string UsName = "Öðrenci", Gender = "Male";
     public Button NextButton, Submitbutton;
     public Image imageToDisplay, MaleFrame, FemaleFrame;
+    [SerializeField] private Player player;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,25 +26,21 @@ public class CharacterSelection : MonoBehaviour
         profilepictures[5] = Resources.Load<Sprite>("ProfilePictures/baldestmanaliveanime");
         profilepictures[6] = Resources.Load<Sprite>("ProfilePictures/yokanime");
         imageToDisplay.sprite = profilepictures[counter];
+        player.image.sprite = imageToDisplay.sprite;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void NextPicture()
     {
         counter++;
         if (counter > max)
         {
             imageToDisplay.sprite = profilepictures[min];
+            player.image.sprite = imageToDisplay.sprite;
             counter = min;
         }
         else
         {
             imageToDisplay.sprite = profilepictures[counter];
+            player.image.sprite = imageToDisplay.sprite;
         }
         UnityEngine.Debug.Log("Next Image number = " + counter);
     }
@@ -55,11 +51,13 @@ public class CharacterSelection : MonoBehaviour
         if(counter < min)
         {
             imageToDisplay.sprite = profilepictures[max];
+            player.image.sprite = imageToDisplay.sprite;
             counter = max;
         }
         else
         {
             imageToDisplay.sprite = profilepictures[counter];
+            player.image.sprite = imageToDisplay.sprite;
         }
         UnityEngine.Debug.Log("Previous Image number = " + counter);
     }
@@ -75,27 +73,35 @@ public class CharacterSelection : MonoBehaviour
             Rect rec = new Rect(0, 0, tex.width, tex.height);
             Sprite spriteToUse = Sprite.Create(tex, rec, new Vector2(0.5f, 0.5f), 100);
             imageToDisplay.sprite = spriteToUse;
+            player.image.sprite = imageToDisplay.sprite;
         }
     }
     
     public void ReadStringInput(string name)
     {
-        UsName = name;
-        UnityEngine.Debug.Log("Username is set to = " + UsName);
-        Submitbutton.interactable = true;
+        if (name != null && name != "")
+        {
+            player.Pusername = name;
+            UnityEngine.Debug.Log("Username is set to = " + player.Pusername);
+            Submitbutton.interactable = true;
+        }
+        else
+        {
+            Submitbutton.interactable = false;
+        }
     }
 
     public void MaleSelection()
     {
         FemaleFrame.enabled = false;
-        Gender = "Male";
+        player.Pgender = "Male";
         NextButton.interactable = true;
     }
 
     public void FemaleSelection()
     {
         MaleFrame.enabled = false;
-        Gender = "Female";
+        player.Pgender = "Female";
         NextButton.interactable = true;
     }
 }

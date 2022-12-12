@@ -1,20 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 public class StatDisplayer : MonoBehaviour
 {
-    public TextMeshProUGUI Name;
-    public TextMeshProUGUI Stats;
-    public TextMeshProUGUI Description;
+    [SerializeField] private TextMeshProUGUI Name;
+    [SerializeField] private TextMeshProUGUI Stats;
+    [SerializeField] private TextMeshProUGUI Description;
     public TextMeshProUGUI ButtonText;
     public Button equip;
     public Image ButtonImage;
     Items defaultitem;
 
-    public void ShowStats(Items item)
+    public void ShowStats(Items item) // Projecting the stats of the selected item to the panel.
     {
         defaultitem = item;
         ButtonText.enabled = true;
@@ -48,7 +46,7 @@ public class StatDisplayer : MonoBehaviour
         Description.text = "\" " + defaultitem.Itemdesc + " \"";
     }
 
-    public void Equip()
+    public void Equip() // Equiping the items
     {
         if (defaultitem != null)
         {
@@ -57,11 +55,11 @@ public class StatDisplayer : MonoBehaviour
             ButtonImage.enabled = false;
             equip.enabled = false;
             Inventory.instance.Equip(defaultitem);
-            RemoveStatsText();
+            RemoveStatsText(); // Calling RemoveStatsText to remove the item's stats from the panel.
         }
     }
 
-    public void RemoveStatsText()
+    public void RemoveStatsText() // Resetting values in order to show the others when they come.
     {
         Name.text = "";
         Stats.text = "";
